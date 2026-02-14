@@ -166,7 +166,7 @@ a:hover { opacity: .8; }
 .hero-texture {
   position: absolute;
   inset: 0;
-  background: url('../images/IMG_7494.JPG') center / cover no-repeat;
+  background: url('../images/IMG_7494.JPG') center / 400px repeat;
   opacity: .12;
   filter: blur(2px) grayscale(.6);
   pointer-events: none;
@@ -296,7 +296,8 @@ a:hover { opacity: .8; }
   height: 100%;
   object-fit: cover;
   opacity: .15;
-  filter: blur(3px) grayscale(.5);
+  filter: blur(4px) grayscale(.5);
+  image-rendering: auto;
 }
 
 /* ---------- Shows ---------- */
@@ -305,13 +306,40 @@ a:hover { opacity: .8; }
   text-align: center;
 }
 
-.shows-placeholder {
-  font-size: 1.1rem;
-  color: var(--gray);
-  font-weight: 300;
-  letter-spacing: .1em;
+.shows-list {
+  list-style: none;
+  max-width: 500px;
+  margin: 1.5rem auto 0;
+}
+
+.show-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.show-item:last-child {
+  border-bottom: none;
+}
+
+.show-date {
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .15em;
   text-transform: uppercase;
-  margin-top: .5rem;
+  color: var(--pink);
+  min-width: 70px;
+  text-align: right;
+}
+
+.show-venue {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--white);
+  text-align: left;
 }
 
 /* ---------- Booking ---------- */
@@ -333,11 +361,15 @@ a:hover { opacity: .8; }
   font-weight: 600;
 }
 
-.booking-placeholder {
-  color: var(--gray);
-  font-weight: 300;
-  font-size: .95rem;
-  font-style: italic;
+.booking-email {
+  color: var(--pink);
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: .02em;
+  transition: opacity .2s;
+}
+.booking-email:hover {
+  opacity: .7;
 }
 
 /* ---------- Footer ---------- */

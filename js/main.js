@@ -41,7 +41,7 @@
   /* ---------- Scroll-reveal ---------- */
   // Add .reveal class to elements that should animate in
   var revealTargets = document.querySelectorAll(
-    '.about-card, .shows .section-heading, .shows-placeholder, ' +
+    '.about-card, .shows .section-heading, .show-item, ' +
     '.booking .section-heading, .booking p, .booking-contact, ' +
     '.social-links'
   );
