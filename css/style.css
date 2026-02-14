@@ -360,6 +360,7 @@ a:hover { opacity: .8; }
   flex-direction: column;
   gap: .3rem;
   min-width: 0;
+  text-align: left;
 }
 
 .show-title {
