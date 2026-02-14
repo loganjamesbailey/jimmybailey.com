@@ -308,38 +308,91 @@ a:hover { opacity: .8; }
 
 .shows-list {
   list-style: none;
-  max-width: 500px;
-  margin: 1.5rem auto 0;
+  max-width: 650px;
+  margin: 2rem auto 0;
 }
 
 .show-item {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 1rem 0;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 1.8rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, .08);
+  text-align: left;
 }
 
 .show-item:last-child {
   border-bottom: none;
 }
 
+/* Date block — neon green */
 .show-date {
-  font-size: .85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+  width: 80px;
+  padding: .6rem 0;
+  border: 1px solid rgba(57, 255, 20, .3);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.show-month {
+  font-size: .7rem;
   font-weight: 700;
-  letter-spacing: .15em;
+  letter-spacing: .2em;
   text-transform: uppercase;
-  color: var(--pink);
-  min-width: 70px;
-  text-align: right;
+  color: #39FF14;
+}
+
+.show-day {
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #39FF14;
+  text-shadow: 0 0 15px rgba(57, 255, 20, .4);
+}
+
+/* Info column */
+.show-info {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  min-width: 0;
+}
+
+.show-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.show-details {
+  font-size: .85rem;
+  font-weight: 400;
+  color: var(--gray);
 }
 
 .show-venue {
-  font-size: 1.1rem;
+  font-size: .85rem;
   font-weight: 400;
-  color: var(--white);
-  text-align: left;
+  color: var(--gray);
+}
+
+.show-desc {
+  font-size: .85rem;
+  font-weight: 300;
+  color: var(--gray);
+  font-style: italic;
+  margin-top: .2rem;
+}
+
+@media (max-width: 480px) {
+  .show-item { gap: 1.2rem; }
+  .show-date { min-width: 64px; width: 64px; }
+  .show-day { font-size: 1.5rem; }
+  .show-title { font-size: 1rem; }
 }
 
 /* ---------- Booking ---------- */
