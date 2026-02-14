@@ -1,0 +1,418 @@
+/* ==========================================
+   Jimmy Bailey - jimmybailey.com
+   Single-page site styles
+   ========================================== */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #FF1493;
+  --pink-glow: rgba(255, 20, 147, .45);
+  --black: #000000;
+  --dark: #0a0a0a;
+  --gray: #888;
+  --white: #f0f0f0;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--pink);
+  text-decoration: none;
+  transition: opacity .2s;
+}
+a:hover { opacity: .8; }
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---------- Nav ---------- */
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1rem 0;
+  transition: background .3s, padding .3s;
+}
+
+#nav.scrolled {
+  background: rgba(0, 0, 0, .92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: .6rem 0;
+}
+
+.nav-inner {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: .05em;
+  color: var(--pink);
+}
+.nav-logo:hover { opacity: 1; }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--white);
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--pink); opacity: 1; }
+
+/* Mobile toggle */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 28px;
+  height: 20px;
+  position: relative;
+  z-index: 110;
+}
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--white);
+  position: absolute;
+  left: 0;
+  transition: transform .3s, opacity .3s;
+}
+.nav-toggle span:nth-child(1) { top: 0; }
+.nav-toggle span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.nav-toggle span:nth-child(3) { bottom: 0; }
+
+.nav-toggle.active span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 60%;
+    height: 100vh;
+    background: rgba(0, 0, 0, .97);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    transition: right .35s ease;
+  }
+  .nav-links.open { right: 0; }
+  .nav-links a { font-size: 1.1rem; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Floral texture behind hero */
+.hero-texture {
+  position: absolute;
+  inset: 0;
+  background: url('../images/IMG_7494.JPG') center / cover no-repeat;
+  opacity: .12;
+  filter: blur(2px) grayscale(.6);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding-top: 5rem;
+}
+
+/* Neon outlined title - bold blocky style matching logo */
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: .95;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title-line {
+  font-size: clamp(4rem, 14vw, 10rem);
+  font-weight: 900;
+  letter-spacing: .04em;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--pink);
+  text-shadow:
+    0 0 20px var(--pink-glow),
+    0 0 40px rgba(255, 20, 147, .2);
+  /* Fallback for browsers without text-stroke */
+  paint-order: stroke fill;
+}
+
+.hero-sub {
+  font-size: clamp(.85rem, 2vw, 1.1rem);
+  font-weight: 300;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* Hero portrait */
+.hero-image {
+  position: relative;
+  z-index: 2;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 500px;
+  /* Fade image into black at bottom */
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.hero-image img {
+  width: 100%;
+  filter: contrast(1.1);
+}
+
+/* Scroll hint */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: var(--pink);
+  opacity: .5;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-8px); }
+  60% { transform: translateX(-50%) translateY(-4px); }
+}
+
+/* ---------- About ---------- */
+.about {
+  padding: 6rem 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.about-card {
+  padding: 2rem 0;
+}
+
+.about-card p {
+  font-size: 1.05rem;
+  color: var(--gray);
+  line-height: 1.7;
+  max-width: 440px;
+}
+
+/* ---------- Section Heading ---------- */
+.section-heading {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: .02em;
+  color: var(--pink);
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+/* ---------- Section Divider (floral) ---------- */
+.section-divider {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+}
+
+.section-divider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .15;
+  filter: blur(3px) grayscale(.5);
+}
+
+/* ---------- Shows ---------- */
+.shows {
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.shows-placeholder {
+  font-size: 1.1rem;
+  color: var(--gray);
+  font-weight: 300;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-top: .5rem;
+}
+
+/* ---------- Booking ---------- */
+.booking {
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.booking p {
+  font-size: 1.05rem;
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+.booking-contact {
+  margin-top: 1.5rem;
+  font-size: 1.15rem !important;
+  color: var(--white) !important;
+  font-weight: 600;
+}
+
+.booking-placeholder {
+  color: var(--gray);
+  font-weight: 300;
+  font-size: .95rem;
+  font-style: italic;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  position: relative;
+  padding: 4rem 0 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.footer-texture {
+  position: absolute;
+  inset: 0;
+  background: url('../images/IMG_7500.jpg') center / cover no-repeat;
+  opacity: .1;
+  filter: blur(4px) grayscale(.4);
+  pointer-events: none;
+}
+
+.footer .container {
+  position: relative;
+  z-index: 2;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.social-link {
+  color: var(--white);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 50%;
+  transition: border-color .3s, color .3s, box-shadow .3s;
+}
+.social-link:hover {
+  color: var(--pink);
+  border-color: var(--pink);
+  box-shadow: 0 0 15px var(--pink-glow);
+  opacity: 1;
+}
+
+.footer-copy {
+  font-size: .8rem;
+  color: var(--gray);
+  letter-spacing: .05em;
+}
+
+/* ---------- Scroll-reveal animations ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Utility ---------- */
+::selection {
+  background: var(--pink);
+  color: var(--black);
+}
+
+/* Smooth focus for accessibility */
+:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 3px;
+}
